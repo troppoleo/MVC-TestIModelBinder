@@ -1,0 +1,16 @@
+﻿@model TestIModelBinder.Models.Person
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@{Html.BeginForm("SavePerson", "Person");
+    
+    @Html.TextAreaFor(m=>m.name)
+    @Html.TextAreaFor(m => m.surname)
+    @Html.TextAreaFor(m => m.age)
+
+    <button type="submit">Save</button>
+}
