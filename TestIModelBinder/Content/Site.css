@@ -16,7 +16,7 @@
     white-space: normal;
 }
 
-
+/*https://stackoverflow.com/questions/33480641/missing-class-definition-for-input-validation-error-inside-a-new-asp-net-mvc-5*/
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
