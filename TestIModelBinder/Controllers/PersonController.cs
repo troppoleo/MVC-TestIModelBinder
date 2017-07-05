@@ -13,13 +13,22 @@ namespace TestIModelBinder.Controllers
         // GET: Person
         public ActionResult Index()
         {
+            // lettura dell'error message
+            ViewBag.Title = Resource.TITLE;
             return View();
         }
 
-        public ActionResult SavePerson([ModelBinder(typeof(ModelMapperPerson))] PersonCompact p) {
-            PersonCompact myP = p;
+
+        [ValidateAntiForgeryToken]
+        public ActionResult SavePerson([ModelBinder(typeof(ModelMapperPerson))] PersonCompact p)
+        {
+            if (ModelState.IsValid)
+            {
+                PersonCompact myP = p;
+            }
             return RedirectToAction("Index");
         }
+
 
     }
 }

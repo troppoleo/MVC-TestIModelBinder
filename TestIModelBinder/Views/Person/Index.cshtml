@@ -1,16 +1,40 @@
 ﻿@model TestIModelBinder.Models.Person
 
-@{
-    ViewBag.Title = "Index";
-}
+@*@{
+        ViewBag.Title = "Index";
+    }*@
 
 <h2>Index</h2>
 
 @{Html.BeginForm("SavePerson", "Person");
-    
-    @Html.TextAreaFor(m=>m.name)
+
+    @Html.ValidationSummary(true)
+    @Html.AntiForgeryToken()
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.name, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.name)
+            @Html.ValidationMessageFor(model => model.name)
+        </div>
+    </div>
+
+    @*<div>
+        @Html.LabelFor(m => m.name)
+        @Html.TextBoxFor(m => m.name)
+        @Html.ValidationMessageFor(m => m.name)
+    </div>*@
+
     @Html.TextAreaFor(m => m.surname)
     @Html.TextAreaFor(m => m.age)
 
     <button type="submit">Save</button>
 }
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
